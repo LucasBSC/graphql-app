@@ -207,12 +207,8 @@ const resolvers = {
         post => post.id === args.post && post.published
       );
 
-      if (!userExists) {
-        throw new Error("User not found");
-      }
-
-      if (!postExists) {
-        throw new Error("Post not published");
+      if (!userExists || !postExists) {
+        throw new Error("Unable to find user and post");
       }
 
       const comment = {
